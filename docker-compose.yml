@@ -4,7 +4,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - ./index.html:/usr/share/nginx/html/index.html
 
@@ -13,4 +13,5 @@ services:
     environment:
       POSTGRES_USER: usuario
       POSTGRES_PASSWORD: password_seguro
-      POSTGRES_DB: mi_base_datos
+      POSTGRES_DB: mi_base_datosx
+

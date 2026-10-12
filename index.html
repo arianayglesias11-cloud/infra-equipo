@@ -1,16 +1,97 @@
-version: '3.8'
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto de contenedores de Ariana</title>
+    <style>
+        body { background-color: #0a1128; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #0052d4 0%, #4364f7 50%, #6fb1fc 100%); padding: 30px; border-radius: 8px; text-align: center; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .header h1 { margin: 0; font-size: 28px; font-weight: bold; letter-spacing: 0.5px; }
+        .header p { margin: 10px 0 0 0; color: #d1e2ff; font-size: 14px; }
+        .section-title { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4ea8de; margin: 30px 0 15px 0; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .card { background-color: #1c2541; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); }
+        .card-title { font-size: 15px; font-weight: bold; color: #ffffff; margin-bottom: 5px; }
+        .badge { color: #000000; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-top: 8px; display: inline-block; text-transform: uppercase; }
+        .badge-active { background-color: #00e676; }
+        .badge-net { background-color: #00b0ff; color: #ffffff; }
+        .badge-vol { background-color: #00b0ff; color: #ffffff; }
+        .badge-base { background-color: #00b0ff; color: #ffffff; }
+        .card-desc { font-size: 13px; color: #94a3b8; margin: 8px 0 0 0; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado Principal -->
+        <div class="header">
+            <h1>Proyecto de contenedores de Ariana</h1>
+            <p>Servidor Docker · Docker Compose y aplicaciones multicontenedor</p>
+        </div>
 
-services:
-  nginx:
-    image: nginx:latest
-    ports:
-      - "8080:80"
-    volumes:
-      - ./index.html:/usr/share/nginx/html/index.html
+        <!-- SECCIÓN 1: LOS 3 SERVICIOS -->
+        <div class="section-title">📌 Los 3 Servicios del Proyecto</div>
 
-  db:
-    image: postgres:15-alpine
-    environment:
-      POSTGRES_USER: usuario
-      POSTGRES_PASSWORD: password_seguro
-      POSTGRES_DB: mi_base_datos
+        <div class="card">
+            <div class="card-title">Servidor web</div>
+            <div><span class="badge badge-active">Activo</span></div>
+            <p class="card-desc">Nginx (ariana-web) publicado en el puerto 8080. Esta es la página que estás viendo.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Aplicación</div>
+            <div><span class="badge badge-active">Activo</span></div>
+            <p class="card-desc">PHP aislado (ariana-app) con el volumen datos_app mapeado de forma de forma persistente.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Base de datos</div>
+            <div><span class="badge badge-active">Activo</span></div>
+            <p class="card-desc">MariaDB 11 (ariana-db) con la base proyecto y volumen datos_db protegido.</p>
+        </div>
+
+        <!-- SECCIÓN 2: RED Y PERSISTENCIA -->
+        <div class="section-title">🔒 Red y Persistencia</div>
+
+        <div class="card">
+            <div class="card-title">red_app</div>
+            <div><span class="badge badge-net">Red</span></div>
+            <p class="card-desc">Red aislada creada por Compose. Los contenedores se comunican internamente por nombre de servicio.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">datos_app</div>
+            <div><span class="badge badge-vol">Volumen</span></div>
+            <p class="card-desc">Persiste el almacenamiento y código de la aplicación ante cualquier reinicio.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">datos_db</div>
+            <div><span class="badge badge-vol">Volumen</span></div>
+            <p class="card-desc">Persiste de forma segura las tablas e índices relacionales de MariaDB.</p>
+        </div>
+
+        <!-- SECCIÓN 3: INSTALADO EN EL SERVIDOR -->
+        <div class="section-title">💻 Instalado en el Servidor</div>
+
+        <div class="card">
+            <div class="card-title">Ubuntu Server</div>
+            <div><span class="badge badge-base">Base</span></div>
+            <p class="card-desc">Servidor anfitrión de las prácticas, administrado remotamente por SSH.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Docker Engine</div>
+            <div><span class="badge badge-base">Motor</span></div>
+            <p class="card-desc">Entorno en producción encargado del ciclo de vida de las imágenes y runtimes.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Docker Compose</div>
+            <div><span class="badge badge-base">Plug-in</span></div>
+            <p class="card-desc">Orquestador encargado de levantar la infraestructura mediante el manifiesto YAML.</p>
+        </div>
+
+    </div>
+</body>
+</html>
